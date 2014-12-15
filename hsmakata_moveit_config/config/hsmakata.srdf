@@ -1,0 +1,357 @@
+<?xml version="1.0" ?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="hsmakata">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="manipulator">
+        <chain base_link="katana_base_link" tip_link="katana_gripper_tool_frame" />
+    </group>
+    <group name="gripper">
+        <link name="katana_gripper_link" />
+        <link name="katana_l_finger_link" />
+        <link name="katana_r_finger_link" />
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="close" group="gripper">
+        <joint name="katana_l_finger_joint" value="-0.435" />
+        <joint name="katana_r_finger_joint" value="-0.435" />
+    </group_state>
+    <group_state name="open" group="gripper">
+        <joint name="katana_l_finger_joint" value="0.28" />
+        <joint name="katana_r_finger_joint" value="0.28" />
+    </group_state>
+    <group_state name="home" group="manipulator">
+        <joint name="katana_motor1_pan_joint" value="0" />
+        <joint name="katana_motor2_lift_joint" value="2.13549" />
+        <joint name="katana_motor3_lift_joint" value="-2.15565" />
+        <joint name="katana_motor4_lift_joint" value="-1.97195" />
+        <joint name="katana_motor5_wrist_roll_joint" value="0" />
+    </group_state>
+    <group_state name="straight" group="manipulator">
+        <joint name="katana_motor1_pan_joint" value="0" />
+        <joint name="katana_motor2_lift_joint" value="1.57" />
+        <joint name="katana_motor3_lift_joint" value="0" />
+        <joint name="katana_motor4_lift_joint" value="0" />
+        <joint name="katana_motor5_wrist_roll_joint" value="0" />
+    </group_state>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="end_effector" parent_link="katana_gripper_tool_frame" group="gripper" parent_group="manipulator" />
+    <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+    <virtual_joint name="FixedBase" type="fixed" parent_frame="world" child_link="base_link" />
+    <!--PASSIVE JOINT: Purpose: this element is used to mark joints that are not actuated-->
+    <passive_joint name="base_swivel_joint" />
+    <passive_joint name="swivel_hubcap_joint" />
+    <passive_joint name="kinect_yaw_joint" />
+    <passive_joint name="kinect_pitch_joint" />
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="back_sonar" link2="base_frame" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="base_link" reason="Adjacent" />
+    <disable_collisions link1="back_sonar" link2="center_hubcap" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="center_wheel" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="front_sonar" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="kata_plate_link" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="katana_base_link" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="katana_gripper_link" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="katana_l_finger_link" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="katana_motor1_pan_link" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="katana_motor2_lift_link" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="katana_motor3_lift_link" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="katana_motor4_lift_link" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="katana_motor5_wrist_roll_link" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="katana_r_finger_link" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="kinect_cube_link" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="kinect_inner_frame_link" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="kinect_outer_frame_link" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="left_hub" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="left_wheel_joint" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="pole_link" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="right_hub" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="sick_link" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="swivel" reason="Never" />
+    <disable_collisions link1="back_sonar" link2="top_plate" reason="Never" />
+    <disable_collisions link1="base_frame" link2="base_link" reason="Never" />
+    <disable_collisions link1="base_frame" link2="center_hubcap" reason="Never" />
+    <disable_collisions link1="base_frame" link2="center_wheel" reason="Never" />
+    <disable_collisions link1="base_frame" link2="front_sonar" reason="Never" />
+    <disable_collisions link1="base_frame" link2="kata_plate_link" reason="Default" />
+    <disable_collisions link1="base_frame" link2="katana_base_link" reason="Never" />
+    <disable_collisions link1="base_frame" link2="katana_motor1_pan_link" reason="Never" />
+    <disable_collisions link1="base_frame" link2="katana_motor2_lift_link" reason="Never" />
+    <disable_collisions link1="base_frame" link2="katana_motor3_lift_link" reason="Never" />
+    <disable_collisions link1="base_frame" link2="kinect_cube_link" reason="Never" />
+    <disable_collisions link1="base_frame" link2="kinect_inner_frame_link" reason="Never" />
+    <disable_collisions link1="base_frame" link2="kinect_outer_frame_link" reason="Never" />
+    <disable_collisions link1="base_frame" link2="left_hub" reason="Never" />
+    <disable_collisions link1="base_frame" link2="left_wheel_joint" reason="Never" />
+    <disable_collisions link1="base_frame" link2="pole_link" reason="Default" />
+    <disable_collisions link1="base_frame" link2="right_hub" reason="Never" />
+    <disable_collisions link1="base_frame" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="base_frame" link2="sick_link" reason="Default" />
+    <disable_collisions link1="base_frame" link2="swivel" reason="Never" />
+    <disable_collisions link1="base_frame" link2="top_plate" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="center_hubcap" reason="Never" />
+    <disable_collisions link1="base_link" link2="front_sonar" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="kata_plate_link" reason="Never" />
+    <disable_collisions link1="base_link" link2="katana_base_link" reason="Never" />
+    <disable_collisions link1="base_link" link2="katana_gripper_link" reason="Never" />
+    <disable_collisions link1="base_link" link2="katana_motor1_pan_link" reason="Never" />
+    <disable_collisions link1="base_link" link2="katana_motor2_lift_link" reason="Never" />
+    <disable_collisions link1="base_link" link2="katana_motor3_lift_link" reason="Never" />
+    <disable_collisions link1="base_link" link2="katana_motor4_lift_link" reason="Never" />
+    <disable_collisions link1="base_link" link2="katana_motor5_wrist_roll_link" reason="Never" />
+    <disable_collisions link1="base_link" link2="kinect_cube_link" reason="Never" />
+    <disable_collisions link1="base_link" link2="kinect_inner_frame_link" reason="Never" />
+    <disable_collisions link1="base_link" link2="kinect_outer_frame_link" reason="Never" />
+    <disable_collisions link1="base_link" link2="left_hub" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="left_wheel_joint" reason="Default" />
+    <disable_collisions link1="base_link" link2="pole_link" reason="Default" />
+    <disable_collisions link1="base_link" link2="right_hub" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="right_wheel_joint" reason="Default" />
+    <disable_collisions link1="base_link" link2="sick_link" reason="Never" />
+    <disable_collisions link1="base_link" link2="swivel" reason="Adjacent" />
+    <disable_collisions link1="base_link" link2="top_plate" reason="Adjacent" />
+    <disable_collisions link1="center_hubcap" link2="center_wheel" reason="Adjacent" />
+    <disable_collisions link1="center_hubcap" link2="front_sonar" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="kata_plate_link" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="katana_base_link" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="katana_gripper_link" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="katana_l_finger_link" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="katana_motor1_pan_link" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="katana_motor2_lift_link" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="katana_motor3_lift_link" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="katana_motor4_lift_link" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="katana_motor5_wrist_roll_link" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="katana_r_finger_link" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="kinect_cube_link" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="kinect_inner_frame_link" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="kinect_outer_frame_link" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="left_hub" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="left_wheel_joint" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="pole_link" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="right_hub" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="sick_link" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="swivel" reason="Never" />
+    <disable_collisions link1="center_hubcap" link2="top_plate" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="front_sonar" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="kata_plate_link" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="katana_base_link" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="katana_gripper_link" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="katana_l_finger_link" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="katana_motor1_pan_link" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="katana_motor2_lift_link" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="katana_motor3_lift_link" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="katana_motor4_lift_link" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="katana_motor5_wrist_roll_link" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="katana_r_finger_link" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="kinect_cube_link" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="kinect_inner_frame_link" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="kinect_outer_frame_link" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="left_hub" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="left_wheel_joint" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="pole_link" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="right_hub" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="sick_link" reason="Never" />
+    <disable_collisions link1="center_wheel" link2="swivel" reason="Adjacent" />
+    <disable_collisions link1="center_wheel" link2="top_plate" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="kata_plate_link" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="katana_base_link" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="katana_gripper_link" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="katana_l_finger_link" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="katana_motor1_pan_link" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="katana_motor2_lift_link" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="katana_motor3_lift_link" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="katana_motor4_lift_link" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="katana_motor5_wrist_roll_link" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="katana_r_finger_link" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="kinect_cube_link" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="kinect_inner_frame_link" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="kinect_outer_frame_link" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="left_hub" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="left_wheel_joint" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="pole_link" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="right_hub" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="sick_link" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="swivel" reason="Never" />
+    <disable_collisions link1="front_sonar" link2="top_plate" reason="Never" />
+    <disable_collisions link1="kata_plate_link" link2="katana_base_link" reason="Adjacent" />
+    <disable_collisions link1="kata_plate_link" link2="katana_motor1_pan_link" reason="Never" />
+    <disable_collisions link1="kata_plate_link" link2="katana_motor2_lift_link" reason="Never" />
+    <disable_collisions link1="kata_plate_link" link2="katana_motor3_lift_link" reason="Never" />
+    <disable_collisions link1="kata_plate_link" link2="kinect_cube_link" reason="Never" />
+    <disable_collisions link1="kata_plate_link" link2="kinect_inner_frame_link" reason="Never" />
+    <disable_collisions link1="kata_plate_link" link2="kinect_outer_frame_link" reason="Never" />
+    <disable_collisions link1="kata_plate_link" link2="left_hub" reason="Never" />
+    <disable_collisions link1="kata_plate_link" link2="left_wheel_joint" reason="Never" />
+    <disable_collisions link1="kata_plate_link" link2="pole_link" reason="Never" />
+    <disable_collisions link1="kata_plate_link" link2="right_hub" reason="Never" />
+    <disable_collisions link1="kata_plate_link" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="kata_plate_link" link2="sick_link" reason="Default" />
+    <disable_collisions link1="kata_plate_link" link2="swivel" reason="Never" />
+    <disable_collisions link1="kata_plate_link" link2="top_plate" reason="Adjacent" />
+    <disable_collisions link1="katana_base_link" link2="katana_motor1_pan_link" reason="Adjacent" />
+    <disable_collisions link1="katana_base_link" link2="katana_motor2_lift_link" reason="Never" />
+    <disable_collisions link1="katana_base_link" link2="katana_motor3_lift_link" reason="Never" />
+    <disable_collisions link1="katana_base_link" link2="kinect_cube_link" reason="Never" />
+    <disable_collisions link1="katana_base_link" link2="kinect_inner_frame_link" reason="Never" />
+    <disable_collisions link1="katana_base_link" link2="kinect_outer_frame_link" reason="Never" />
+    <disable_collisions link1="katana_base_link" link2="left_hub" reason="Never" />
+    <disable_collisions link1="katana_base_link" link2="left_wheel_joint" reason="Never" />
+    <disable_collisions link1="katana_base_link" link2="pole_link" reason="Never" />
+    <disable_collisions link1="katana_base_link" link2="right_hub" reason="Never" />
+    <disable_collisions link1="katana_base_link" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="katana_base_link" link2="sick_link" reason="Default" />
+    <disable_collisions link1="katana_base_link" link2="swivel" reason="Never" />
+    <disable_collisions link1="katana_base_link" link2="top_plate" reason="Never" />
+    <disable_collisions link1="katana_gripper_link" link2="katana_l_finger_link" reason="Adjacent" />
+    <disable_collisions link1="katana_gripper_link" link2="katana_motor3_lift_link" reason="Never" />
+    <disable_collisions link1="katana_gripper_link" link2="katana_motor4_lift_link" reason="Never" />
+    <disable_collisions link1="katana_gripper_link" link2="katana_motor5_wrist_roll_link" reason="Adjacent" />
+    <disable_collisions link1="katana_gripper_link" link2="katana_r_finger_link" reason="Adjacent" />
+    <disable_collisions link1="katana_gripper_link" link2="kinect_inner_frame_link" reason="Never" />
+    <disable_collisions link1="katana_gripper_link" link2="kinect_outer_frame_link" reason="Never" />
+    <disable_collisions link1="katana_gripper_link" link2="left_hub" reason="Never" />
+    <disable_collisions link1="katana_gripper_link" link2="left_wheel_joint" reason="Never" />
+    <disable_collisions link1="katana_gripper_link" link2="right_hub" reason="Never" />
+    <disable_collisions link1="katana_gripper_link" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="katana_gripper_link" link2="swivel" reason="Never" />
+    <disable_collisions link1="katana_gripper_link" link2="top_plate" reason="Never" />
+    <disable_collisions link1="katana_l_finger_link" link2="katana_motor3_lift_link" reason="Never" />
+    <disable_collisions link1="katana_l_finger_link" link2="katana_motor4_lift_link" reason="Never" />
+    <disable_collisions link1="katana_l_finger_link" link2="katana_motor5_wrist_roll_link" reason="Never" />
+    <disable_collisions link1="katana_l_finger_link" link2="katana_r_finger_link" reason="Default" />
+    <disable_collisions link1="katana_l_finger_link" link2="kinect_inner_frame_link" reason="Never" />
+    <disable_collisions link1="katana_l_finger_link" link2="left_hub" reason="Never" />
+    <disable_collisions link1="katana_l_finger_link" link2="left_wheel_joint" reason="Never" />
+    <disable_collisions link1="katana_l_finger_link" link2="right_hub" reason="Never" />
+    <disable_collisions link1="katana_l_finger_link" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="katana_l_finger_link" link2="swivel" reason="Never" />
+    <disable_collisions link1="katana_motor1_pan_link" link2="katana_motor2_lift_link" reason="Adjacent" />
+    <disable_collisions link1="katana_motor1_pan_link" link2="katana_motor3_lift_link" reason="Never" />
+    <disable_collisions link1="katana_motor1_pan_link" link2="kinect_cube_link" reason="Never" />
+    <disable_collisions link1="katana_motor1_pan_link" link2="kinect_inner_frame_link" reason="Never" />
+    <disable_collisions link1="katana_motor1_pan_link" link2="kinect_outer_frame_link" reason="Never" />
+    <disable_collisions link1="katana_motor1_pan_link" link2="left_hub" reason="Never" />
+    <disable_collisions link1="katana_motor1_pan_link" link2="left_wheel_joint" reason="Never" />
+    <disable_collisions link1="katana_motor1_pan_link" link2="pole_link" reason="Never" />
+    <disable_collisions link1="katana_motor1_pan_link" link2="right_hub" reason="Never" />
+    <disable_collisions link1="katana_motor1_pan_link" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="katana_motor1_pan_link" link2="sick_link" reason="Never" />
+    <disable_collisions link1="katana_motor1_pan_link" link2="swivel" reason="Never" />
+    <disable_collisions link1="katana_motor1_pan_link" link2="top_plate" reason="Never" />
+    <disable_collisions link1="katana_motor2_lift_link" link2="katana_motor3_lift_link" reason="Adjacent" />
+    <disable_collisions link1="katana_motor2_lift_link" link2="kinect_cube_link" reason="Never" />
+    <disable_collisions link1="katana_motor2_lift_link" link2="kinect_inner_frame_link" reason="Never" />
+    <disable_collisions link1="katana_motor2_lift_link" link2="kinect_outer_frame_link" reason="Never" />
+    <disable_collisions link1="katana_motor2_lift_link" link2="left_hub" reason="Never" />
+    <disable_collisions link1="katana_motor2_lift_link" link2="left_wheel_joint" reason="Never" />
+    <disable_collisions link1="katana_motor2_lift_link" link2="right_hub" reason="Never" />
+    <disable_collisions link1="katana_motor2_lift_link" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="katana_motor2_lift_link" link2="sick_link" reason="Never" />
+    <disable_collisions link1="katana_motor2_lift_link" link2="swivel" reason="Never" />
+    <disable_collisions link1="katana_motor2_lift_link" link2="top_plate" reason="Never" />
+    <disable_collisions link1="katana_motor3_lift_link" link2="katana_motor4_lift_link" reason="Adjacent" />
+    <disable_collisions link1="katana_motor3_lift_link" link2="katana_motor5_wrist_roll_link" reason="Never" />
+    <disable_collisions link1="katana_motor3_lift_link" link2="katana_r_finger_link" reason="Never" />
+    <disable_collisions link1="katana_motor3_lift_link" link2="kinect_cube_link" reason="Never" />
+    <disable_collisions link1="katana_motor3_lift_link" link2="kinect_inner_frame_link" reason="Never" />
+    <disable_collisions link1="katana_motor3_lift_link" link2="kinect_outer_frame_link" reason="Never" />
+    <disable_collisions link1="katana_motor3_lift_link" link2="left_hub" reason="Never" />
+    <disable_collisions link1="katana_motor3_lift_link" link2="left_wheel_joint" reason="Never" />
+    <disable_collisions link1="katana_motor3_lift_link" link2="right_hub" reason="Never" />
+    <disable_collisions link1="katana_motor3_lift_link" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="katana_motor3_lift_link" link2="sick_link" reason="Never" />
+    <disable_collisions link1="katana_motor3_lift_link" link2="swivel" reason="Never" />
+    <disable_collisions link1="katana_motor3_lift_link" link2="top_plate" reason="Never" />
+    <disable_collisions link1="katana_motor4_lift_link" link2="katana_motor5_wrist_roll_link" reason="Adjacent" />
+    <disable_collisions link1="katana_motor4_lift_link" link2="katana_r_finger_link" reason="Never" />
+    <disable_collisions link1="katana_motor4_lift_link" link2="kinect_cube_link" reason="Never" />
+    <disable_collisions link1="katana_motor4_lift_link" link2="kinect_inner_frame_link" reason="Never" />
+    <disable_collisions link1="katana_motor4_lift_link" link2="kinect_outer_frame_link" reason="Never" />
+    <disable_collisions link1="katana_motor4_lift_link" link2="left_hub" reason="Never" />
+    <disable_collisions link1="katana_motor4_lift_link" link2="left_wheel_joint" reason="Never" />
+    <disable_collisions link1="katana_motor4_lift_link" link2="right_hub" reason="Never" />
+    <disable_collisions link1="katana_motor4_lift_link" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="katana_motor4_lift_link" link2="swivel" reason="Never" />
+    <disable_collisions link1="katana_motor4_lift_link" link2="top_plate" reason="Never" />
+    <disable_collisions link1="katana_motor5_wrist_roll_link" link2="katana_r_finger_link" reason="Never" />
+    <disable_collisions link1="katana_motor5_wrist_roll_link" link2="kinect_cube_link" reason="Never" />
+    <disable_collisions link1="katana_motor5_wrist_roll_link" link2="kinect_inner_frame_link" reason="Never" />
+    <disable_collisions link1="katana_motor5_wrist_roll_link" link2="kinect_outer_frame_link" reason="Never" />
+    <disable_collisions link1="katana_motor5_wrist_roll_link" link2="left_hub" reason="Never" />
+    <disable_collisions link1="katana_motor5_wrist_roll_link" link2="left_wheel_joint" reason="Never" />
+    <disable_collisions link1="katana_motor5_wrist_roll_link" link2="right_hub" reason="Never" />
+    <disable_collisions link1="katana_motor5_wrist_roll_link" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="katana_motor5_wrist_roll_link" link2="swivel" reason="Never" />
+    <disable_collisions link1="katana_motor5_wrist_roll_link" link2="top_plate" reason="Never" />
+    <disable_collisions link1="katana_r_finger_link" link2="kinect_inner_frame_link" reason="Never" />
+    <disable_collisions link1="katana_r_finger_link" link2="left_hub" reason="Never" />
+    <disable_collisions link1="katana_r_finger_link" link2="left_wheel_joint" reason="Never" />
+    <disable_collisions link1="katana_r_finger_link" link2="right_hub" reason="Never" />
+    <disable_collisions link1="katana_r_finger_link" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="katana_r_finger_link" link2="swivel" reason="Never" />
+    <disable_collisions link1="kinect_cube_link" link2="kinect_inner_frame_link" reason="Never" />
+    <disable_collisions link1="kinect_cube_link" link2="kinect_outer_frame_link" reason="Adjacent" />
+    <disable_collisions link1="kinect_cube_link" link2="left_hub" reason="Never" />
+    <disable_collisions link1="kinect_cube_link" link2="left_wheel_joint" reason="Never" />
+    <disable_collisions link1="kinect_cube_link" link2="pole_link" reason="Adjacent" />
+    <disable_collisions link1="kinect_cube_link" link2="right_hub" reason="Never" />
+    <disable_collisions link1="kinect_cube_link" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="kinect_cube_link" link2="sick_link" reason="Never" />
+    <disable_collisions link1="kinect_cube_link" link2="swivel" reason="Never" />
+    <disable_collisions link1="kinect_cube_link" link2="top_plate" reason="Never" />
+    <disable_collisions link1="kinect_inner_frame_link" link2="kinect_outer_frame_link" reason="Adjacent" />
+    <disable_collisions link1="kinect_inner_frame_link" link2="left_hub" reason="Never" />
+    <disable_collisions link1="kinect_inner_frame_link" link2="left_wheel_joint" reason="Never" />
+    <disable_collisions link1="kinect_inner_frame_link" link2="pole_link" reason="Never" />
+    <disable_collisions link1="kinect_inner_frame_link" link2="right_hub" reason="Never" />
+    <disable_collisions link1="kinect_inner_frame_link" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="kinect_inner_frame_link" link2="sick_link" reason="Never" />
+    <disable_collisions link1="kinect_inner_frame_link" link2="swivel" reason="Never" />
+    <disable_collisions link1="kinect_inner_frame_link" link2="top_plate" reason="Never" />
+    <disable_collisions link1="kinect_outer_frame_link" link2="left_hub" reason="Never" />
+    <disable_collisions link1="kinect_outer_frame_link" link2="left_wheel_joint" reason="Never" />
+    <disable_collisions link1="kinect_outer_frame_link" link2="pole_link" reason="Never" />
+    <disable_collisions link1="kinect_outer_frame_link" link2="right_hub" reason="Never" />
+    <disable_collisions link1="kinect_outer_frame_link" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="kinect_outer_frame_link" link2="sick_link" reason="Never" />
+    <disable_collisions link1="kinect_outer_frame_link" link2="swivel" reason="Never" />
+    <disable_collisions link1="kinect_outer_frame_link" link2="top_plate" reason="Never" />
+    <disable_collisions link1="left_hub" link2="left_wheel_joint" reason="Adjacent" />
+    <disable_collisions link1="left_hub" link2="pole_link" reason="Never" />
+    <disable_collisions link1="left_hub" link2="right_hub" reason="Never" />
+    <disable_collisions link1="left_hub" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="left_hub" link2="sick_link" reason="Never" />
+    <disable_collisions link1="left_hub" link2="swivel" reason="Never" />
+    <disable_collisions link1="left_hub" link2="top_plate" reason="Never" />
+    <disable_collisions link1="left_wheel_joint" link2="pole_link" reason="Never" />
+    <disable_collisions link1="left_wheel_joint" link2="right_hub" reason="Never" />
+    <disable_collisions link1="left_wheel_joint" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="left_wheel_joint" link2="sick_link" reason="Never" />
+    <disable_collisions link1="left_wheel_joint" link2="swivel" reason="Never" />
+    <disable_collisions link1="left_wheel_joint" link2="top_plate" reason="Never" />
+    <disable_collisions link1="pole_link" link2="right_hub" reason="Never" />
+    <disable_collisions link1="pole_link" link2="right_wheel_joint" reason="Never" />
+    <disable_collisions link1="pole_link" link2="sick_link" reason="Never" />
+    <disable_collisions link1="pole_link" link2="swivel" reason="Never" />
+    <disable_collisions link1="pole_link" link2="top_plate" reason="Adjacent" />
+    <disable_collisions link1="right_hub" link2="right_wheel_joint" reason="Adjacent" />
+    <disable_collisions link1="right_hub" link2="sick_link" reason="Never" />
+    <disable_collisions link1="right_hub" link2="swivel" reason="Never" />
+    <disable_collisions link1="right_hub" link2="top_plate" reason="Never" />
+    <disable_collisions link1="right_wheel_joint" link2="sick_link" reason="Never" />
+    <disable_collisions link1="right_wheel_joint" link2="swivel" reason="Never" />
+    <disable_collisions link1="right_wheel_joint" link2="top_plate" reason="Never" />
+    <disable_collisions link1="sick_link" link2="swivel" reason="Never" />
+    <disable_collisions link1="sick_link" link2="top_plate" reason="Adjacent" />
+    <disable_collisions link1="swivel" link2="top_plate" reason="Never" />
+</robot>

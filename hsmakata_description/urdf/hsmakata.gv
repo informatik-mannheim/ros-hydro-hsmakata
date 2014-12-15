@@ -1,0 +1,107 @@
+digraph G {
+node [shape=box];
+"base_link" [label="base_link"];
+"back_sonar" [label="back_sonar"];
+"front_sonar" [label="front_sonar"];
+"swivel" [label="swivel"];
+"center_wheel" [label="center_wheel"];
+"center_hubcap" [label="center_hubcap"];
+"top_plate" [label="top_plate"];
+"base_frame" [label="base_frame"];
+"kata_plate_link" [label="kata_plate_link"];
+"katana_base_link" [label="katana_base_link"];
+"katana_base_frame" [label="katana_base_frame"];
+"katana_motor1_pan_link" [label="katana_motor1_pan_link"];
+"katana_motor2_lift_link" [label="katana_motor2_lift_link"];
+"katana_motor3_lift_link" [label="katana_motor3_lift_link"];
+"katana_motor4_lift_link" [label="katana_motor4_lift_link"];
+"katana_motor5_wrist_roll_link" [label="katana_motor5_wrist_roll_link"];
+"katana_gripper_link" [label="katana_gripper_link"];
+"katana_l_finger_link" [label="katana_l_finger_link"];
+"katana_r_finger_link" [label="katana_r_finger_link"];
+"katana_gripper_tool_frame" [label="katana_gripper_tool_frame"];
+"pole_link" [label="pole_link"];
+"pole_top_link" [label="pole_top_link"];
+"kinect_cube_link" [label="kinect_cube_link"];
+"kinect_outer_frame_link" [label="kinect_outer_frame_link"];
+"kinect_inner_frame_link" [label="kinect_inner_frame_link"];
+"kinect_link" [label="kinect_link"];
+"kinect_depth_frame" [label="kinect_depth_frame"];
+"kinect_depth_optical_frame" [label="kinect_depth_optical_frame"];
+"kinect_rgb_frame" [label="kinect_rgb_frame"];
+"kinect_rgb_optical_frame" [label="kinect_rgb_optical_frame"];
+"sick_link" [label="sick_link"];
+"left_hub" [label="left_hub"];
+"left_wheel_joint" [label="left_wheel_joint"];
+"right_hub" [label="right_hub"];
+"right_wheel_joint" [label="right_wheel_joint"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_link" -> "base_back_joint" [label="xyz: 0.109 0 0.209 \nrpy: 0 -0 0"]
+"base_back_joint" -> "back_sonar"
+"base_link" -> "base_front_joint" [label="xyz: -0.198 0 0.208 \nrpy: 0 -0 0"]
+"base_front_joint" -> "front_sonar"
+"base_link" -> "base_swivel_joint" [label="xyz: -0.185 0 0.055 \nrpy: 0 -0 0"]
+"base_swivel_joint" -> "swivel"
+"swivel" -> "swivel_hubcap_joint" [label="xyz: -0.026 0 -0.016 \nrpy: 0 -0 0"]
+"swivel_hubcap_joint" -> "center_wheel"
+"center_wheel" -> "center_wheel_joint" [label="xyz: -0.0035 0 -0.001 \nrpy: 0 -0 0"]
+"center_wheel_joint" -> "center_hubcap"
+"base_link" -> "base_top_joint" [label="xyz: -0.045 0 0.234 \nrpy: 0 -0 0"]
+"base_top_joint" -> "top_plate"
+"top_plate" -> "base_frame_joint" [label="xyz: 0 0 0.002 \nrpy: 0 -0 0"]
+"base_frame_joint" -> "base_frame"
+"top_plate" -> "kata_plate_joint" [label="xyz: 0.022 0 0.191 \nrpy: 0 -0 0"]
+"kata_plate_joint" -> "kata_plate_link"
+"kata_plate_link" -> "base_link_to_katana" [label="xyz: 0 0 0.012 \nrpy: 0 -0 0"]
+"base_link_to_katana" -> "katana_base_link"
+"katana_base_link" -> "katana_base_frame_joint" [label="xyz: 0 0 0.2015 \nrpy: 0 -0 0"]
+"katana_base_frame_joint" -> "katana_base_frame"
+"katana_base_link" -> "katana_motor1_pan_joint" [label="xyz: 0 0 0.2015 \nrpy: 0 -0 0"]
+"katana_motor1_pan_joint" -> "katana_motor1_pan_link"
+"katana_motor1_pan_link" -> "katana_motor2_lift_joint" [label="xyz: 0 0 0 \nrpy: 1.5708 -0 0"]
+"katana_motor2_lift_joint" -> "katana_motor2_lift_link"
+"katana_motor2_lift_link" -> "katana_motor3_lift_joint" [label="xyz: 0.19 0 0 \nrpy: 0 -0 0"]
+"katana_motor3_lift_joint" -> "katana_motor3_lift_link"
+"katana_motor3_lift_link" -> "katana_motor4_lift_joint" [label="xyz: 0.139 0 0 \nrpy: -3.14159 -0 0"]
+"katana_motor4_lift_joint" -> "katana_motor4_lift_link"
+"katana_motor4_lift_link" -> "katana_motor5_wrist_roll_joint" [label="xyz: 0.1523 0 0 \nrpy: 1.5708 5.55112e-17 -1.5708"]
+"katana_motor5_wrist_roll_joint" -> "katana_motor5_wrist_roll_link"
+"katana_motor5_wrist_roll_link" -> "katana_gripper_joint" [label="xyz: 0 0 -0.0323 \nrpy: 0 1.5708 0"]
+"katana_gripper_joint" -> "katana_gripper_link"
+"katana_gripper_link" -> "katana_l_finger_joint" [label="xyz: 0.034 0 0 \nrpy: -3.14159 -0 0"]
+"katana_l_finger_joint" -> "katana_l_finger_link"
+"katana_gripper_link" -> "katana_r_finger_joint" [label="xyz: 0.034 0 0 \nrpy: 0 -0 0"]
+"katana_r_finger_joint" -> "katana_r_finger_link"
+"katana_motor5_wrist_roll_link" -> "katana_gripper_tool_frame_joint" [label="xyz: 0 0 -0.1505 \nrpy: 0 1.5708 0"]
+"katana_gripper_tool_frame_joint" -> "katana_gripper_tool_frame"
+"top_plate" -> "pole_joint" [label="xyz: -0.195 0 0 \nrpy: 0 -0 0"]
+"pole_joint" -> "pole_link"
+"pole_link" -> "pole_top_joint" [label="xyz: 0 0 0.966 \nrpy: 0 -0 0"]
+"pole_top_joint" -> "pole_top_link"
+"pole_top_link" -> "kinect_cube_joint" [label="xyz: 0.04 0 0 \nrpy: 0 -0 0"]
+"kinect_cube_joint" -> "kinect_cube_link"
+"kinect_cube_link" -> "kinect_yaw_joint" [label="xyz: 0.018 0 0.0375 \nrpy: 0 -0 0"]
+"kinect_yaw_joint" -> "kinect_outer_frame_link"
+"kinect_outer_frame_link" -> "kinect_pitch_joint" [label="xyz: 0 0 0.15 \nrpy: 0 -0 0"]
+"kinect_pitch_joint" -> "kinect_inner_frame_link"
+"kinect_inner_frame_link" -> "kinect_joint" [label="xyz: 0.05 0 0 \nrpy: 0 -0 0"]
+"kinect_joint" -> "kinect_link"
+"kinect_link" -> "kinect_depth_joint" [label="xyz: 0 -0.028 0 \nrpy: 0 -0 0"]
+"kinect_depth_joint" -> "kinect_depth_frame"
+"kinect_depth_frame" -> "kinect_depth_optical_joint" [label="xyz: 0 0 0 \nrpy: -1.5708 -5.55112e-17 -1.5708"]
+"kinect_depth_optical_joint" -> "kinect_depth_optical_frame"
+"kinect_link" -> "kinect_rgb_joint" [label="xyz: 0 -0.005 0 \nrpy: 0 -0 0"]
+"kinect_rgb_joint" -> "kinect_rgb_frame"
+"kinect_rgb_frame" -> "kinect_rgb_optical_joint" [label="xyz: 0 0 0 \nrpy: -1.5708 -5.55112e-17 -1.5708"]
+"kinect_rgb_optical_joint" -> "kinect_rgb_optical_frame"
+"top_plate" -> "sick_joint" [label="xyz: 0.12 0 0.07 \nrpy: 0 -0 0"]
+"sick_joint" -> "sick_link"
+"base_link" -> "left_hub_joint" [label="xyz: 0 0.15 0.08 \nrpy: 0 -0 0"]
+"left_hub_joint" -> "left_hub"
+"left_hub" -> "left_wheel_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"left_wheel_joint" -> "left_wheel_joint"
+"base_link" -> "right_hub_joint" [label="xyz: 0 -0.15 0.08 \nrpy: 0 -0 0"]
+"right_hub_joint" -> "right_hub"
+"right_hub" -> "right_wheel_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"right_wheel_joint" -> "right_wheel_joint"
+}

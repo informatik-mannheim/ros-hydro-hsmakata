@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="p2os_urdf" type="publisher" name="publisher"/>
+	
+</launch>

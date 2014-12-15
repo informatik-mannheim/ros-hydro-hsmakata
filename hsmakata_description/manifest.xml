@@ -1,0 +1,16 @@
+<package>
+  <description brief="hsmakata_description">
+
+     hsmakata_description
+
+  </description>
+  <author>cpt</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/hsmakata_description</url>
+  <depend package="urdf"/>
+  <depend package="xacro"/>
+
+</package>
+
+

@@ -1,0 +1,15 @@
+<package>
+  <description brief="hsmakata_dynamixel_conmmander">
+
+     hsmakata_dynamixel_conmmander
+
+  </description>
+  <author>pioneer</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/hsmakata_dynamixel_conmmander</url>
+  <depend package="roscpp"/>
+
+</package>
+
+

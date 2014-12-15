@@ -1,0 +1,26 @@
+ <launch>
+    <!-- Load controller configuration to parameter server -->
+    <rosparam file="$(find dynamixel_tutorials)/config/dynamixel_joint_controllers.yaml" command="load"/>
+    <node name="dynamixel_manager" pkg="dynamixel_controllers" type="controller_manager.py" required="true" output="screen">
+        <rosparam>
+            namespace: dxl_manager
+            serial_ports:
+                pan_tilt_port:
+                    port_name: "/dev/ttyUSB1"
+                    baud_rate: 57600
+                    min_motor_id: 2
+                    max_motor_id: 4
+                    update_rate: 20
+        </rosparam>
+    </node>
+    <node name="dynamixel_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py"
+          args="--manager=dxl_manager
+                --port=pan_tilt_port
+                --type=simple
+                dxl_pitch_joint_controller
+                dxl_yaw_joint_controller"
+          output="screen">
+    </node>
+</launch>
+
+

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="publish_joint_states"/>
+  <arg name="publish_controller_commands"/>
+
+  <node name="hsmakata_joint_commander" pkg="hsmakata_joint_commander" type="joint_commander" output="screen">
+    <param name="kinect_pitch_joint" type="double" value="0.84" />
+    <param name="kinect_yaw_joint" type="double" value="0.0" />
+    <param name="publish_joint_states" type="bool" value="$(arg publish_joint_states)" />
+    <param name="publish_controller_commands" type="bool" value="$(arg publish_controller_commands)" />
+  </node>
+</launch>

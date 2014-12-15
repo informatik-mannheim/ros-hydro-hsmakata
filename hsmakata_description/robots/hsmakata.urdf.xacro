@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot
+xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:xacro="http://ros.org/wiki/xacro" name="hsmakata">
+
+<xacro:include filename="$(find katana_description)/urdf/transmissions.urdf.xacro" />
+
+  
+  <!-- **************************** -->
+  <!-- ** base_link to base_frame * -->
+  <!-- **************************** -->
+ <!--xacro:include filename="$(find p2os_urdf)/defs/pioneer3dx.urdf.xacro" /-->  
+
+  <xacro:include filename="$(find p2os_urdf)/defs/pioneer3dx.xacro" />
+  <link name="base_frame">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://hsmakata_description/meshes/base_frame.stl" />
+      </geometry>
+      <material name="grey">
+        <color rgba="0.3 0.3 0.3 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://hsmakata_description/meshes/base_frame_collision.stl" /> 
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_frame_joint" type="fixed">
+    <parent link="top_plate" />
+    <child link="base_frame" />
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.002" />
+  </joint>
+
+  <!-- **************************** -->
+  <!-- * dummy_link to sick_link ** -->
+  <!-- **************************** -->
+  <joint name="sick_joint" type="fixed">
+    <parent link="top_plate" />
+    <child link="sick_link" />
+    <origin rpy="0 0 0" xyz="0.12 0 0.07" />
+  </joint>
+  <link name="sick_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://hsmakata_description/meshes/sick_lms200.stl" />
+      </geometry>
+      <material name="blue">
+        <color rgba="0.0 0.0 0.8 1" />
+      </material>
+    </visual>
+  </link>
+
+
+  <!-- **************************** -->
+  <!-- * dummy_link to kata_plate_link * -->
+  <!-- **************************** -->
+  <link name="kata_plate_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://hsmakata_description/meshes/katana_base_plate.stl" />
+      </geometry>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="kata_plate_joint" type="fixed">
+    <parent link="top_plate" />
+    <child link="kata_plate_link" />
+    <origin rpy="0 0 0" xyz="0.022 0 0.191" />
+  </joint>
+
+
+  <!-- **************************** -->
+  <!-- *** kata_plate_link to Katana Arm *** -->
+  <!-- **************************** -->
+  <xacro:include filename="$(find katana_description)/urdf/katana_400_6m180.urdf.xacro" />
+  <joint name="base_link_to_katana" type="fixed">
+    <parent link="kata_plate_link" />
+    <child link="katana_base_link" />
+    <origin rpy="0 0 0" xyz="0 0 0.012" />
+  </joint>
+
+
+  <!-- **************************** -->
+  <!-- ***** dummy_link to pole_link** -->
+  <!-- **************************** -->
+  <link name="pole_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://hsmakata_description/meshes/pole.stl" />
+      </geometry>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://hsmakata_description/meshes/pole_collision.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="pole_joint" type="fixed">
+    <parent link="top_plate" />
+    <child link="pole_link" />
+    <origin rpy="0 0 0" xyz="-0.195 0.0 0.0" />
+  </joint>
+
+  <!-- **************************** -->
+  <!-- ***** pole_link to pole_top_link** -->
+  <!-- **************************** -->
+  <link name="pole_top_link"/>
+  <joint name="pole_top_joint" type="fixed">
+    <parent link="pole_link" />
+    <child link="pole_top_link" />
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.966" />
+  </joint>
+
+
+  <!-- **************************** -->
+  <!-- ***** pole_top_link to kinect_holder_link ** -->
+  <!-- **************************** -->
+  <link name="kinect_cube_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <box size="0.11 0.08 0.065" />
+      </geometry>
+      <material name="orange">
+        <color rgba="0.8 0.22 0.0 1" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.12 0.09 0.07" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="kinect_cube_joint" type="fixed">
+    <parent link="pole_top_link" />
+    <child link="kinect_cube_link" />
+    <origin rpy="0 0 0" xyz="0.04 0.0 0.0" />
+  </joint>
+
+
+  <!-- **************************** -->
+  <!-- ***** kinect_outer_frame_link to kinect_link ** -->
+  <!-- **************************** -->
+
+
+  <link name="kinect_outer_frame_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://hsmakata_description/meshes/kinect_outer_frame.stl" />
+      </geometry>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="kinect_yaw_joint" type="revolute">
+    <parent link="kinect_cube_link" />
+    <child link="kinect_outer_frame_link" />
+    <origin rpy="0 0 0" xyz="0.018 0.0 0.0375" />
+    <axis xyz="0 0 1"/>
+    <limit effort="0.6" lower="-2.8" upper="2.8" velocity="1.0"/>
+  </joint>
+
+
+
+  <!-- **************************** -->
+  <!-- ***** kinect_holder_link to kinect_link ** -->
+  <!-- **************************** -->
+  <link name="kinect_inner_frame_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0 0 0" />
+      <geometry>
+        <mesh filename="package://hsmakata_description/meshes/kinect_frame.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.0315 0 -0.017" />
+      <geometry>
+        <box size="0.0730 0.2760 0.0720" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.43" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="0.00291539883384" ixy="0.0" ixz="0.0" iyy="0.000376715682647" iyz="0.0" izz="0.0029205946651" />
+    </inertial>
+  </link>
+    <!-- kinect -25 effektiv 21.77 rad=0.38 -->
+    <!-- origin rpy="0 0.38 0" xyz="0.06 -0.02 0.075" -->
+  <joint name="kinect_pitch_joint" type="revolute">
+    <parent link="kinect_outer_frame_link" />
+    <child link="kinect_inner_frame_link" />
+    <origin rpy="0 0 0" xyz="0 0 0.15" />
+    <axis xyz="0 1 0"/>
+    <limit effort="1000.0" lower="-2.8" upper="2.8" velocity="1.0" />
+  </joint>
+
+  <!-- **************************** -->
+  <!-- ***** kinect_holder_link to kinect_link ** -->
+  <!-- **************************** -->
+  <link name="kinect_link">
+  </link>
+    <!-- kinect -25 effektiv 21.77 rad=0.38 -->
+    <!-- origin rpy="0 0.38 0" xyz="0.06 -0.02 0.075" -->
+  <joint name="kinect_joint" type="fixed">
+    <parent link="kinect_inner_frame_link" />
+    <child link="kinect_link" />
+    <origin rpy="0 0 0" xyz="0.05 0 0 " />
+  </joint>
+
+
+  <joint name="kinect_depth_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 -0.028 0" />
+    <parent link="kinect_link" />
+    <child link="kinect_depth_frame" />
+  </joint>
+  <link name="kinect_depth_frame">
+    <inertial>
+      <mass value="0.000001" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+    </inertial>
+  </link>
+  <joint name="kinect_depth_optical_joint" type="fixed">
+    <origin rpy="-1.57079632679 0 -1.57079632679" xyz="0 0 0" />
+    <parent link="kinect_depth_frame" />
+    <child link="kinect_depth_optical_frame" />
+  </joint>
+  <link name="kinect_depth_optical_frame">
+    <inertial>
+      <mass value="0.000001" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+    </inertial>
+  </link>
+  <joint name="kinect_rgb_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 -0.005 0" />
+    <parent link="kinect_link" />
+    <child link="kinect_rgb_frame" />
+  </joint>
+  <link name="kinect_rgb_frame">
+    <inertial>
+      <mass value="0.000001" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+    </inertial>
+  </link>
+  <joint name="kinect_rgb_optical_joint" type="fixed">
+    <origin rpy="-1.57079632679 0 -1.57079632679" xyz="0 0 0" />
+    <parent link="kinect_rgb_frame" />
+    <child link="kinect_rgb_optical_frame" />
+  </joint>
+  <link name="kinect_rgb_optical_frame">
+    <inertial>
+      <mass value="0.000001" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+    </inertial>
+  </link>
+</robot>

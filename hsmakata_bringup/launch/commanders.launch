@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Calvin joint commander -->
+  <include file="$(find hsmakata_joint_commander)/launch/hsmakata_joint_commander.launch" >
+    <arg name="publish_joint_states" value="True" />
+    <arg name="publish_controller_commands" value="True" />
+  </include>
+
+  <node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure"/>
+</launch>

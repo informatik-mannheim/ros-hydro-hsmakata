@@ -1,0 +1,8 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: hsmakata_description
+    relative_path: robots/hsmakata.urdf.xacro
+  SRDF:
+    relative_path: config/hsmakata.srdf
+  CONFIG:
+    generated_timestamp: 1401112423

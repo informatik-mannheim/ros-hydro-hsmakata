@@ -1,0 +1,20 @@
+controller_manager_ns: ""
+controller_list:
+  - name: katana_arm_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+      - katana_motor1_pan_joint
+      - katana_motor2_lift_joint
+      - katana_motor3_lift_joint
+      - katana_motor4_lift_joint
+      - katana_motor5_wrist_roll_joint
+
+  - name: gripper_grasp_posture_controller
+    action_ns: ""
+    type: GripperCommand
+    default: true
+    joints:
+      -  katana_l_finger_joint
+      -  katana_r_finger_joint
