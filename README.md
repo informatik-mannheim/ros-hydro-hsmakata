@@ -10,7 +10,7 @@ mkdir -p ~/hsma/rosbuild_ws/
 cd  ~/hsma/rosbuild_ws/
 
 
-rosws init
+rosws init . /opt/ros/hydro/setup.bash
 
 
 source setup.bash
