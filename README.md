@@ -5,12 +5,26 @@
 # build the wet workspace (rosbuild)
 ===========================================
 mkdir -p ~/hsma/rosbuild_ws/ 
+
+
 cd  ~/hsma/rosbuild_ws/
+
+
 rosws init
+
+
 source setup.bash
+
+
 git clone https://github.com/oh-cpt/hsmakata.git
+
+
 rosws set hsmakata/
+
+
 source setup.bash
+
+
 rosmake -a
 
 and start the dependency hunt - ENJOY!
@@ -18,9 +32,17 @@ and start the dependency hunt - ENJOY!
 # build the dry workspace (catkin)
 ===========================================
 mkdir -p ~/hsma/catkin_ws/src
+
+
 cd ~/hsma/catkin_ws/src
+
+
 git clone https://github.com/oh-cpt/ikfast_plugin.git
+
+
 cd ~/hsma/catkin_ws/
+
+
 catkin_make
 
 

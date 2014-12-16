@@ -6,20 +6,18 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /MotionPlanning1
         - /MotionPlanning1/Scene Geometry1
         - /MotionPlanning1/Scene Robot1
         - /MotionPlanning1/Planning Request1
         - /MotionPlanning1/Planning Metrics1
         - /MotionPlanning1/Planned Path1
-        - /PointCloud21
         - /RobotModel1
         - /RobotModel1/Links1
         - /MarkerArray1
         - /MarkerArray1/Namespaces1
-        - /TF1
+        - /Camera1
       Splitter Ratio: 0.826087
-    Tree Height: 809
+    Tree Height: 340
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -63,173 +61,6 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
-          back_sonar:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          base_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          base_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          center_hubcap:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          center_wheel:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          front_sonar:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          kata_plate_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          katana_base_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          katana_base_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          katana_gripper_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          katana_gripper_tool_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          katana_l_finger_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          katana_motor1_pan_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          katana_motor2_lift_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          katana_motor3_lift_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          katana_motor4_lift_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          katana_motor5_wrist_roll_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          katana_r_finger_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          kinect_cube_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          kinect_depth_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          kinect_depth_optical_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          kinect_inner_frame_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          kinect_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          kinect_outer_frame_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          kinect_rgb_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          kinect_rgb_optical_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          left_hub:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          left_wheel_joint:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          pole_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          pole_top_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          right_hub:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          right_wheel_joint:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          sick_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          swivel:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          top_plate:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
         Loop Animation: false
         Robot Alpha: 0.5
         Show Robot Collision: false
@@ -273,173 +104,6 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
-          back_sonar:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          base_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          base_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          center_hubcap:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          center_wheel:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          front_sonar:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          kata_plate_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          katana_base_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          katana_base_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          katana_gripper_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          katana_gripper_tool_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          katana_l_finger_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          katana_motor1_pan_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          katana_motor2_lift_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          katana_motor3_lift_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          katana_motor4_lift_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          katana_motor5_wrist_roll_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          katana_r_finger_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          kinect_cube_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          kinect_depth_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          kinect_depth_optical_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          kinect_inner_frame_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          kinect_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          kinect_outer_frame_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          kinect_rgb_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          kinect_rgb_optical_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          left_hub:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          left_wheel_joint:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          pole_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          pole_top_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          right_hub:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          right_wheel_joint:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          sick_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          swivel:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          top_plate:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
         Robot Alpha: 0.5
         Show Robot Collision: false
         Show Robot Visual: false
@@ -473,7 +137,7 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: false
-    - Alpha: 0.8
+    - Alpha: 1
       Class: rviz/RobotModel
       Collision Enabled: false
       Enabled: true
@@ -664,137 +328,23 @@ Visualization Manager:
         {}
       Queue Size: 100
       Value: true
-    - Class: rviz/TF
-      Enabled: true
-      Frame Timeout: 15
-      Frames:
-        All Enabled: true
-        back_sonar:
-          Value: true
-        base_frame:
-          Value: true
-        base_link:
-          Value: true
-        center_hubcap:
-          Value: true
-        center_wheel:
-          Value: true
-        front_sonar:
-          Value: true
-        kata_plate_link:
-          Value: true
-        katana_base_frame:
-          Value: true
-        katana_base_link:
-          Value: true
-        katana_gripper_link:
-          Value: true
-        katana_gripper_tool_frame:
-          Value: true
-        katana_l_finger_link:
-          Value: true
-        katana_motor1_pan_link:
-          Value: true
-        katana_motor2_lift_link:
-          Value: true
-        katana_motor3_lift_link:
-          Value: true
-        katana_motor4_lift_link:
-          Value: true
-        katana_motor5_wrist_roll_link:
-          Value: true
-        katana_r_finger_link:
-          Value: true
-        kinect_cube_link:
-          Value: true
-        kinect_depth_frame:
-          Value: true
-        kinect_depth_optical_frame:
-          Value: true
-        kinect_inner_frame_link:
-          Value: true
-        kinect_link:
-          Value: true
-        kinect_outer_frame_link:
-          Value: true
-        kinect_rgb_frame:
-          Value: true
-        kinect_rgb_optical_frame:
-          Value: true
-        left_hub:
-          Value: true
-        left_wheel_joint:
-          Value: true
-        pole_link:
-          Value: true
-        pole_top_link:
-          Value: true
-        right_hub:
-          Value: true
-        right_wheel_joint:
-          Value: true
-        sick_link:
-          Value: true
-        swivel:
-          Value: true
-        top_plate:
-          Value: true
-      Marker Scale: 0.3
-      Name: TF
-      Show Arrows: true
-      Show Axes: true
-      Show Names: false
-      Tree:
-        base_link:
-          back_sonar:
-            {}
-          front_sonar:
-            {}
-          left_hub:
-            left_wheel_joint:
-              {}
-          right_hub:
-            right_wheel_joint:
-              {}
-          swivel:
-            center_wheel:
-              center_hubcap:
-                {}
-          top_plate:
-            base_frame:
-              {}
-            kata_plate_link:
-              katana_base_link:
-                katana_base_frame:
-                  {}
-                katana_motor1_pan_link:
-                  katana_motor2_lift_link:
-                    katana_motor3_lift_link:
-                      katana_motor4_lift_link:
-                        katana_motor5_wrist_roll_link:
-                          katana_gripper_link:
-                            katana_l_finger_link:
-                              {}
-                            katana_r_finger_link:
-                              {}
-                          katana_gripper_tool_frame:
-                            {}
-            pole_link:
-              pole_top_link:
-                kinect_cube_link:
-                  kinect_outer_frame_link:
-                    kinect_inner_frame_link:
-                      kinect_link:
-                        kinect_depth_frame:
-                          kinect_depth_optical_frame:
-                            {}
-                        kinect_rgb_frame:
-                          kinect_rgb_optical_frame:
-                            {}
-            sick_link:
-              {}
-      Update Interval: 0
-      Value: true
+    - Class: rviz/Camera
+      Enabled: false
+      Image Rendering: background and overlay
+      Image Topic: /kinect/rgb/image_color
+      Name: Camera
+      Overlay Alpha: 0.5
+      Queue Size: 2
+      Transport Hint: raw
+      Value: false
+      Visibility:
+        Grid: true
+        MarkerArray: true
+        MotionPlanning: true
+        PointCloud2: true
+        RobotModel: true
+        Value: true
+      Zoom Factor: 1
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -811,7 +361,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 1.03564
+      Distance: 2.14538
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
@@ -823,12 +373,14 @@ Visualization Manager:
         Z: 4.88863e-06
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.229797
+      Pitch: -1.5698
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 3.1418
+      Yaw: 0.6918
     Saved: ~
 Window Geometry:
+  Camera:
+    collapsed: false
   Displays:
     collapsed: false
   Height: 1056
@@ -838,7 +390,7 @@ Window Geometry:
   Hide Right Dock: true
   Motion Planning:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd00000001000000000000010f000003dafc0200000005fb000000100044006900730070006c0061007900730100000028000003be000000dd00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000003b0000000b0000000b000fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e006701000003ec0000001600000016000000160000062a000003da00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000002a2000003dafc0200000006fb000000100044006900730070006c0061007900730100000028000001e9000000dd00fffffffb0000000800480065006c00700000000342000000bb0000007600fffffffb0000000a0056006900650077007300000003b0000000b0000000b000fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000217000001eb0000017400fffffffb0000000c00430061006d00650072006102000003a7000000ef000002a20000028a00000497000003da00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
   Width: 1855
